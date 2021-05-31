@@ -172,7 +172,7 @@ pct exec $CTID /setup.sh
 
 # Get network details and show completion message
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created Portainer LXC to $CTID."
+info "Successfully created Node-Red LXC to $CTID."
 msg "
 
 WebInterface is reachable by going to the following URLs.
