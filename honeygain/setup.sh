@@ -55,8 +55,8 @@ msg "Installing Docker..."
 sh <(curl -sSL https://get.docker.com) &>/dev/null
 
 # Install honeygain
-msg "Installing honeygain..."
-docker volume create honeygain_data >/dev/null
+#msg "Installing honeygain..."
+#docker volume create honeygain_data >/dev/null
 #docker run -d \
 #  -p 8000:8000 \
 #  -p 9000:9000 \
@@ -65,7 +65,7 @@ docker volume create honeygain_data >/dev/null
 #  --restart=unless-stopped \
 #  -v /var/run/docker.sock:/var/run/docker.sock \
 #  -v honeygain_data:/data \
-#  honeygain/honeygain  &>/dev/null
+#  honeygain/honeygain &>/dev/null
 
 # Install Watchtower
 msg "Installing Watchtower..."
