@@ -49,10 +49,7 @@ apt-get -qqy install \
     
 #Docker PGP key
 msg "Adding docker PGP key..."
-sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - )
-
-#alternative
-#sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) 
+sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) 
 
 # Customize Docker configuration
 msg "Customizing Docker..."
