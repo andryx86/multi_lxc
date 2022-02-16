@@ -60,7 +60,7 @@ EOF
 
 # Install Docker
 msg "Installing Docker..."
-rm /var/lib/apt/lists/*
+rm /var/lib/apt/lists/* &> /dev/null
 apt-get update
 apt-cache policy docker-ce
 apt-get install docker-ce
