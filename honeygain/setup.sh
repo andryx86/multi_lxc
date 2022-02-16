@@ -43,8 +43,8 @@ apt-get -qqy install \
     gnupg \
     lsb-release &>/dev/null
 
-#Docker PGP certs
-msg "Adding docker PGP key
+#Docker PGP key
+msg "Adding docker PGP key"
 sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) &>/dev/null
 
 # Customize Docker configuration
