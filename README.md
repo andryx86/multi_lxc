@@ -9,7 +9,7 @@ Many benefits can be gained by using a LXC container compared to a VM. The resou
 To create a new LXC container on Proxmox and setup Portainer to run inside of it, run the following in a SSH connection or the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/andryx86/proxmox_multi_lxc/master/[appliance-folder]/create_container.sh)"
+bash -c "$(wget --no-cache -qLO - https://github.com/andryx86/proxmox_multi_lxc/raw/master/honeygain/create_container.sh)"
 ```
 
 ## Console
