@@ -55,42 +55,42 @@ msg "Installing Docker..."
 sh <(curl -sSL https://get.docker.com) &>/dev/null
 
 # Install honeygain
-msg "Installing honeygain..."
-docker volume create honeygain_data >/dev/null
-docker run -d \
-  -p 8000:8000 \
-  -p 9000:9000 \
-  --label com.centurylinklabs.watchtower.enable=true \
-  --name=honeygain \
-  --restart=unless-stopped \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v honeygain_data:/data \
-  honeygain/honeygain &>/dev/null
+#msg "Installing honeygain..."
+#docker volume create honeygain_data >/dev/null
+#docker run -d \
+#  -p 8000:8000 \
+#  -p 9000:9000 \
+#  --label com.centurylinklabs.watchtower.enable=true \
+#  --name=honeygain \
+#  --restart=unless-stopped \
+#  -v /var/run/docker.sock:/var/run/docker.sock \
+#  -v honeygain_data:/data \
+#  honeygain/honeygain &>/dev/null
 
 # Install Watchtower
-msg "Installing Watchtower..."
-docker run -d \
-  --name watchtower \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  containrrr/watchtower \
-  --cleanup \
-  --label-enable &>/dev/null
+#msg "Installing Watchtower..."
+#docker run -d \
+#  --name watchtower \
+#  -v /var/run/docker.sock:/var/run/docker.sock \
+#  containrrr/watchtower \
+#  --cleanup \
+#  --label-enable &>/dev/null
 
 # Customize container
-msg "Customizing container..."
-rm /etc/motd # Remove message of the day after login
-rm /etc/update-motd.d/10-uname # Remove kernel information after login
-touch ~/.hushlogin # Remove 'Last login: ' and mail notification after login
-GETTY_OVERRIDE="/etc/systemd/system/container-getty@1.service.d/override.conf"
-mkdir -p $(dirname $GETTY_OVERRIDE)
-cat << EOF > $GETTY_OVERRIDE
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin root --noclear --keep-baud tty%I 115200,38400,9600 \$TERM
-EOF
-systemctl daemon-reload
-systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
+#msg "Customizing container..."
+#rm /etc/motd # Remove message of the day after login
+#rm /etc/update-motd.d/10-uname # Remove kernel information after login
+#touch ~/.hushlogin # Remove 'Last login: ' and mail notification after login
+#GETTY_OVERRIDE="/etc/systemd/system/container-getty@1.service.d/override.conf"
+#mkdir -p $(dirname $GETTY_OVERRIDE)
+#cat << EOF > $GETTY_OVERRIDE
+#[Service]
+#ExecStart=
+#ExecStart=-/sbin/agetty --autologin root --noclear --keep-baud tty%I 115200,38400,9600 \$TERM
+#EOF
+#systemctl daemon-reload
+#systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
 
 # Cleanup container
-msg "Cleanup..."
-rm -rf /setup.sh /var/{cache,log}/* /var/lib/apt/lists/*
+#msg "Cleanup..."
+#rm -rf /setup.sh /var/{cache,log}/* /var/lib/apt/lists/*
