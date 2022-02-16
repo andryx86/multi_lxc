@@ -42,11 +42,17 @@ apt-get -qqy install \
     ca-certificates \
     curl \
     gnupg \
-    lsb-release
-
+    lsb-release \
+    apt-transport-https \
+    gnupg2 \
+    software-properties-common
+    
 #Docker PGP key
 msg "Adding docker PGP key..."
-sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) 
+sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - )
+
+#alternative
+#sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) 
 
 # Customize Docker configuration
 msg "Customizing Docker..."
@@ -61,7 +67,11 @@ EOF
 # Install Docker
 msg "Installing Docker..."
 apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-cache policy docker-ce
+apt-get install docker-ce
+
+#checking docker status
+systemctl status docker
 
 #old way
 #sh <(curl -sSL https://get.docker.com) &>/dev/null
