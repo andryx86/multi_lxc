@@ -42,10 +42,7 @@ apt-get -qqy install \
     ca-certificates \
     curl \
     gnupg \
-    lsb-release \
-    apt-transport-https \
-    gnupg2 \
-    software-properties-common
+    lsb-release >/dev/null
     
 #Docker PGP key
 msg "Adding docker PGP key..."
@@ -63,6 +60,7 @@ EOF
 
 # Install Docker
 msg "Installing Docker..."
+rm /var/lib/apt/lists/*
 apt-get update
 apt-cache policy docker-ce
 apt-get install docker-ce
