@@ -42,8 +42,12 @@ apt-get -qqy install \
     ca-certificates \
     curl \
     gnupg \
+    chmod \
     lsb-release >/dev/null
-    
+
+cd /etc/ssl
+chmod o+rx certs
+
 #Docker PGP key
 msg "Adding docker PGP key..."
 sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) 
