@@ -39,10 +39,7 @@ apt-get -qqy upgrade &>/dev/null
 msg "Installing prerequisites..."
 apt-get update
 apt-get -qqy install \     
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release >/dev/null
+    curl >/dev/null
 
 #Docker PGP key
 #msg "Adding docker PGP key..."
@@ -62,10 +59,6 @@ cat >$DOCKER_CONFIG_PATH <<'EOF'
   "log-driver": "journald"
 }
 EOF
-
-#packages cleaunp
-msg "Cleaning up space"
-apt autoremove && apt autoclean
 
 # Install Docker
 msg "Installing Docker..."
