@@ -52,6 +52,11 @@ chmod o+rx certs
 msg "Adding docker PGP key..."
 sh <(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg) 
 
+ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
 # Customize Docker configuration
 msg "Customizing Docker..."
 DOCKER_CONFIG_PATH='/etc/docker/daemon.json'
@@ -70,7 +75,8 @@ mkdir -p /var/lib/apt/lists/partial
 apt-get clean
 apt-get update
 apt-cache policy docker-ce
-apt-get install docker-ce
+#apt-get install docker-ce
+apt-get install docker-ce docker-ce-cli containerd.io
 
 #checking docker status
 systemctl status docker
