@@ -42,7 +42,6 @@ apt-get -qqy install \
     ca-certificates \
     curl \
     gnupg \
-    #chmod \
     lsb-release >/dev/null
 
 #cd /etc/ssl
