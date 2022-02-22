@@ -52,23 +52,6 @@ EOF
 
 # Install Docker
 msg "Installing Docker..."
-
-#too heavy
-#apt-get clean
-#mv /var/lib/apt/lists /tmp
-#mkdir -p /var/lib/apt/lists/partial
-#apt-get clean
-#apt-get update
-#apt-cache policy docker-ce
-#apt-get install docker-ce
-#apt-get install docker-ce docker-ce-cli containerd.io
-#checking docker status
-#systemctl status docker
-
-#old way
-#sh <(curl -sSL https://get.docker.com) &>/dev/null
-
-#let's try
 sh <(curl -sSL https://get.docker.com -o get-docker.sh) &>/dev/null
 sh get-docker.sh
 
