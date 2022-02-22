@@ -38,8 +38,11 @@ apt-get -qqy upgrade &>/dev/null
 # Install prerequisites
 msg "Installing prerequisites..."
 apt-get update
-apt-get -qqy install \    
-    curl >/dev/null
+apt-get -qqy install \     
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release >/dev/null
 
 #Docker PGP key
 #msg "Adding docker PGP key..."
