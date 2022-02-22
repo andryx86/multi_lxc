@@ -82,7 +82,7 @@ msg "Installing Docker..."
 #sh <(curl -sSL https://get.docker.com) &>/dev/null
 
 #let's try
-sh curl -sSL https://get.docker.com -o get-docker.sh
+sh <(curl -sSL https://get.docker.com -o get-docker.sh) &>/dev/null
 sh get-docker.sh
 
 # Install honeygain
